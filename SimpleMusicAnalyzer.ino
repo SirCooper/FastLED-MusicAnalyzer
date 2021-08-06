@@ -43,7 +43,7 @@
 #define DATA_PIN 18
 #define NUM_LEDS 480
 
-#define SAMPLES 1024             // Must be a power of 2
+#define SAMPLES 256             // Must be a power of 2
 #define SAMPLING_FRQUENCY 40000 // Hz, must be 40000 or less due to ADC conversion time. Determines maximum frequency that can be analysed by the FFT Fmax=sampleF/2.
 
 CRGB leds[NUM_LEDS];
