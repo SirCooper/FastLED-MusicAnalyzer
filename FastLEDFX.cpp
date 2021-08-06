@@ -55,7 +55,7 @@ int FastLEDFX:: FreqSimple( uint16_t start_led, uint16_t num_leds, bool loud, bo
 
 int FastLEDFX:: FreqDouble( uint16_t start_led, uint16_t num_leds, bool loud, bool position_fixed)
 {
-  uint16_t pointer =0;
+  uint16_t pointer = start_led;
   uint8_t bright = 255;
   uint16_t _endled=start_led+num_leds-1;
   for (int i = 0; i < this->_pass_value->resolution; i++)
@@ -66,7 +66,7 @@ int FastLEDFX:: FreqDouble( uint16_t start_led, uint16_t num_leds, bool loud, bo
     for (pointer; pointer < length_Band+start_val; pointer++)
     {            
       this->_FXLED[pointer] = col;
-      this->_FXLED[(_endled) - pointer] = col;
+      this->_FXLED[(_endled) - pointer +start_led] = col;
     }
     pointer += (position_fixed ? (num_leds/this->_pass_value->resolution)/2-length_Band: 0);  }
 }
@@ -107,7 +107,7 @@ int FastLEDFX:: PeaksSimple( uint16_t start_led, uint16_t num_leds, bool loud, b
 
 int FastLEDFX:: PeaksDouble( uint16_t start_led, uint16_t num_leds, bool loud, bool position_fixed)
 {
-  uint16_t pointer =0;
+  uint16_t pointer =start_led;
   uint8_t bright = 255;
   uint16_t _endled=start_led+num_leds-1;
   for (int i = 0; i < this->_pass_value->resolution; i++)
@@ -118,7 +118,7 @@ int FastLEDFX:: PeaksDouble( uint16_t start_led, uint16_t num_leds, bool loud, b
     for (pointer; pointer < length_Band+start_val; pointer++)
     {            
       this->_FXLED[pointer] = col;
-      this->_FXLED[(_endled) - pointer] = col;
+      this->_FXLED[(_endled) - pointer + start_led] = col;
     }
     pointer += (position_fixed ? (num_leds/this->_pass_value->resolution)/2-length_Band: 0);  }
 }
